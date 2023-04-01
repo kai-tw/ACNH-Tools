@@ -1,0 +1,196 @@
+:root {
+	--theme-color: #165264;
+	--theme-transition: all 0.2s ease-in-out;
+	--theme-font: 300 16px/1.7 "Roboto", "Noto Sans TC", sans-serif;
+	--theme-font-color: #9a9a9a;
+	--theme-header-color: rgba(255, 255, 255, .8);
+	--theme-nav-height: 3.75rem;
+	--theme-hover-color: #3d3d3d;
+	--theme-background-color: #fcfcfb;
+	--contrast-light-color: #f2a365;
+	--contrast-dark-color: #222831;
+}
+
+#app {
+	margin: 6rem auto;
+	box-sizing: border-box;
+}
+
+.button {
+	position: relative;
+	outline: none;
+	padding: .3rem 1rem;
+	border: 1px solid #333;
+	border-radius: .5rem;
+	background: transparent;
+	font: inherit;
+	color: #333;
+	cursor: pointer;
+	transition: var(--theme-transition);
+}
+
+	.button:after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 1;
+	}
+
+	.button:hover {
+		background: #333;
+		color: #fff;
+	}
+
+	.button:active {
+		transform: translateY(.1rem);
+	}
+
+	.button.active {
+		border-color: var(--contrast-light-color);
+		background: var(--contrast-light-color);
+		color: var(--contrast-dark-color);
+		font-weight: bold;
+	}
+
+	.button.switch:hover {
+		border-color: #ddd !important;
+		background: #ddd !important;
+		color: #333 !important;
+	}
+
+	.button.safe:hover {
+		border-color: #008000 !important;
+		background: #008000 !important;
+	}
+
+	.button.warn:hover {
+		border-color: #ff0000 !important;
+		background: #ff0000 !important;
+	}
+
+.description {
+    margin: 2rem 5%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+}
+#app {
+    display: flex;
+    margin: 6rem 5%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.control-panel {
+    margin: 2rem 5%;
+    text-align: center;
+}
+.list {
+    position: relative;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 1.2rem;
+    table-layout: fixed;
+}
+    .list:before {
+        content: attr(data-title);
+        position: absolute;
+        top: 0;
+        left: 1.5rem;
+        padding: 0 .5rem;
+        background: var(--theme-background-color);
+        color: var(--theme-color);
+        font-weight: bold;
+        transform: translateY(-50%);
+    }
+    .list tr {
+        transition: var(--theme-transition);
+    }
+    .list tr.hidden {
+        opacity: .2
+    }
+    .list td {
+        padding: .5rem 1rem;
+        color: #333;
+    }
+        .list td.title {
+            color: var(--theme-color);
+            font-weight: bold;
+        }
+
+    /* Checkbox style credit: https://codepen.io/andreasstorm/pen/deRvMy */
+
+    .list .checkbox {
+        display: none;
+    }
+
+    .list .label {
+        position: relative;
+        display: block;
+        margin: auto;
+        width: 18px;
+        height: 18px;
+        -webkit-tap-highlight-color: transparent;
+        transform: translate3d(0, 0, 0);
+        font-size: 0;
+        cursor: pointer;
+    }
+
+        .list .label:before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(34,50,84,0.03);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .list .label svg {
+            position: relative;
+            z-index: 1;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke: #165264;
+            stroke-width: 1.5;
+            transform: translate3d(0, 0, 0);
+            transition: all 0.2s ease;
+        }
+
+            .list .label svg path {
+                stroke-dasharray: 60;
+                stroke-dashoffset: 0;
+            }
+
+            .list .label svg polyline {
+                stroke-dasharray: 22;
+                stroke-dashoffset: 66;
+            }
+
+        .list .label:hover:before {
+            opacity: 1;
+        }
+
+    .list .checkbox:checked + .label svg {
+        stroke: #165264;
+    }
+
+        .list .checkbox:checked + .label svg path {
+            stroke-dashoffset: 60;
+            transition: all 0.3s linear;
+        }
+
+        .list .checkbox:checked + .label svg polyline {
+            stroke-dashoffset: 42;
+            transition: all 0.2s linear;
+            transition-delay: 0.15s;
+        }
+    /* End of checkbox style */
